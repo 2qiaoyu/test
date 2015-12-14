@@ -10,8 +10,8 @@ import java.util.Map;
 /**
  * Created by joham on 2015/9/16.
  */
-public class TestQianMiApi {
-    private static final Logger LOGGER = Logger.getLogger(TestQianMiApi.class);
+public class TestMyApi {
+    private static final Logger LOGGER = Logger.getLogger(TestMyApi.class);
     public static void main(String[] args) {
         //login();
         addCustomer();

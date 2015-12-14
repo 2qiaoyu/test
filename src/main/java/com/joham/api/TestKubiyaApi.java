@@ -15,7 +15,8 @@ public class TestKubiyaApi {
      * 记录日志对象
      */
     public static void main(String[] args) {
-        sendMessage();
+        /*sendMessage();*/
+        addCustomer();
     }
 
     /**
@@ -23,7 +24,7 @@ public class TestKubiyaApi {
      */
     private static void addCustomer() {
         //注册成功，将信息同步到对方网站
-        String url = "http://122.96.155.202:18070/ccs_web/serviceReg/businessPlaformUserAction?" +
+        String url = "http://www.yczhsq.com/serviceReg/businessPlaformUserAction?" +
                 "userCode=joham&mobileNo=13952012650&newPwd=000000&action=1";
         String resultMessage = "";
         PostMethod postMethod = new PostMethod(url);
