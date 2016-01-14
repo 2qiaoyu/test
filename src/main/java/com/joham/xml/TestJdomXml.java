@@ -9,10 +9,10 @@ import java.io.StringReader;
 import java.util.List;
 
 /**
- * 解析xml
+ * JDOM解析xml
  * Created by joham on 2015/8/29.
  */
-public class Test {
+public class TestJdomXml {
     public static void main(String[] args) {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><PAY><BODY><EC>00</EC><SID>6110200117</SID><SO>20150829130806</SO><ZO>4154131084192439</ZO><ZODT>20150829130926</ZODT><ZA>0.01</ZA><ZS>3</ZS><ZUDT>20150829131008</ZUDT><OP>03</OP><SIGN>6ba3a581c9b61a0c44af0c5c9dec7f84</SIGN><ZSIGN>c4799821f9bf1055fc873ea470fbfeac</ZSIGN><CC>05819b3655e6ad0a67ff6368d688f51a</CC></BODY></PAY>";
         StringReader read = new StringReader(xml);
@@ -26,9 +26,9 @@ public class Test {
             //取的根元素
             Element root = doc.getRootElement();
             System.out.println(root.getName());//输出根元素的名称
-            List jiedian = root.getChildren();
+            List node = root.getChildren();
             Element et = null;
-            et = (Element) jiedian.get(0);//循环依次得到子元素
+            et = (Element) node.get(0);//循环依次得到子元素
             Element EC = et.getChild("EC");
             System.out.println(et.getName());
             System.out.println(EC.getValue());
