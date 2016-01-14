@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
 public class Test {
     public static void main(String[] args) throws UnknownHostException {
         testIndexof();
-        getHostIp();
-        xiaoshu();
+        //getHostIp();
+        //xiaoshu();
     }
 
     /**
@@ -23,7 +23,23 @@ public class Test {
         System.out.println(ip.substring(0,ip.indexOf(".")));
     }
 
+    /**
+     * 字符串拆成字符
+     */
+    public static void testStringToChar(){
+        String idCard = "320121198804190013";
+        char[] arr = idCard.toCharArray();
+        for(int i =0 ;i < arr.length ;i++){
+            System.out.println(arr[i]);
+        }
+    }
 
+    /**
+     * //现在时间距离1970.1.1的毫秒数
+     */
+    public static void testCurrentTimeMillis(){
+        System.out.println(System.currentTimeMillis());
+    }
 
     /**
      * 获取本机IP和主机名
