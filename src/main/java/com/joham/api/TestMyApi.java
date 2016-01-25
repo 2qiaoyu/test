@@ -20,11 +20,11 @@ public class TestMyApi {
     private static final Logger LOGGER = Logger.getLogger(TestMyApi.class);
 
     public static void main(String[] args) throws Exception {
-        login();
+        //login();
         //addCustomer();
         //findCustomerDetail();
         //findCustomerList();
-        //test4();
+        test();
     }
 
     /**
@@ -131,7 +131,7 @@ public class TestMyApi {
         String url = "http://127.0.0.1:8082/open/storeInformation.htm?" +
                 "timestamp=" + date + "&pageNo=1&pageSize=15&userName=lie" + "&customerId=1735&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
         System.out.println(url);
-        String resultMessage = "";
+        /*String resultMessage = "";
         PostMethod getMethod = new PostMethod(url);
         HttpClient client = new HttpClient();
         try {
@@ -141,7 +141,7 @@ public class TestMyApi {
             Map<String, Object> map = new HashMap<String, Object>();
             map = getMapFromJson(resultMessage.toString());
         } catch (Exception e) {
-        }
+        }*/
     }
 
     /**
@@ -183,11 +183,11 @@ public class TestMyApi {
         String addressName = URLEncoder.encode("测试111", "utf-8");
         String provinceName = URLEncoder.encode("江苏", "utf-8");
         String cityName = URLEncoder.encode("南京市", "utf-8");
-        String districtName = URLEncoder.encode("江宁区", "utf-8");
-        String adressDetail = URLEncoder.encode("千米网", "utf-8");
+        String districtName = URLEncoder.encode("a", "utf-8");
+        String addressDetail = URLEncoder.encode("千米网", "utf-8");
         //添加会员信息
         String url = "http://127.0.0.1:8082/open/receipt/modiCustAddress.htm?" +
-                "timestamp=" + date + "&userName=lie&addressId=608&customerId=1735&addressName=" + addressName + "&provinceName=" + provinceName + "&cityName=" + cityName+ "&districtName="+ districtName+ "&adressDetail=" + adressDetail+"&adressMobile=13952012650&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
+                "timestamp=" + date + "&userName=lie&addressId=608&customerId=1735&addressName=" + addressName + "&provinceName=" + provinceName + "&cityName=" + cityName+ "&districtName="+ districtName+ "&addressDetail=" + addressDetail+"&addressMobile=13952012650&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
         System.out.println(url);
         String resultMessage = "";
         PostMethod getMethod = new PostMethod(url);
@@ -242,7 +242,7 @@ public class TestMyApi {
         String sign = MD5Util.md5Hex("lie" + date + "PJHDZTGKVRTEARKEIFSWMFWYYMZRPW" + "ENGUQGRFPMISIIPHUSRB");
         //添加会员信息
         String url = "http://127.0.0.1:8082/open/order/list.htm?" +
-                "pageNo=1&pageSize=15&timestamp=" + date + "&userName=lie&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign+"&orderType=1";
+                "timestamp=" + date + "&userName=lie&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
         System.out.println(url);
         PostMethod getMethod = new PostMethod(url);
         HttpClient client = new HttpClient();
