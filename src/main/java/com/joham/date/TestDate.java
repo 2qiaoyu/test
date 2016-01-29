@@ -12,9 +12,13 @@ import java.util.List;
  * Created by joham on 2015/10/13.
  */
 public class TestDate {
-    /** 记录日志对象 */
+
+    /**
+     * 记录日志对象
+     */
     private static final Logger LOGGER = Logger.getLogger(TestDate.class);
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         // 定义输出日期格式
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd EEE");
 
@@ -32,10 +36,10 @@ public class TestDate {
 
     /**
      * 根据日期获得星期几
+     *
      * @param mdate
      * @return
      */
-    @SuppressWarnings("deprecation")
     public static List<Date> dateToWeek(Date mdate) {
         int b = mdate.getDay();
         Date fdate;
@@ -44,7 +48,7 @@ public class TestDate {
         for (int a = 1; a <= 7; a++) {
             fdate = new Date();
             fdate.setTime(fTime + (a * 24 * 3600000));
-            list.add(a-1, fdate);
+            list.add(a - 1, fdate);
         }
         return list;
     }
@@ -52,7 +56,7 @@ public class TestDate {
     /**
      * 获得当前日期和前几天
      */
-    public static void getToday(){
+    public static void getToday() {
         Calendar calendar = Calendar.getInstance();
         String startTime = new SimpleDateFormat("yyyy-MM-dd EEE").format(calendar.getTime());
         //前6天是几号星期几

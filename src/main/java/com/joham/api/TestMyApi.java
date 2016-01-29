@@ -128,20 +128,19 @@ public class TestMyApi {
         String date = bartDateFormat.format(new Date());
         String sign = MD5Util.md5Hex("lie" + date + "PJHDZTGKVRTEARKEIFSWMFWYYMZRPW" + "ENGUQGRFPMISIIPHUSRB");
         //添加会员信息
-        String url = "http://127.0.0.1:8082/open/storeInformation.htm?" +
+        String url = "http://172.19.26.161:8000/jifuopen/storeInformation.htm?" +
                 "timestamp=" + date + "&pageNo=1&pageSize=15&userName=lie" + "&customerId=1735&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
         System.out.println(url);
-        /*String resultMessage = "";
         PostMethod getMethod = new PostMethod(url);
         HttpClient client = new HttpClient();
         try {
             client.executeMethod(getMethod);
-            resultMessage = getMethod.getResponseBodyAsString();
+            String resultMessage = getMethod.getResponseBodyAsString();
             System.out.println("返回数据" + resultMessage);
-            Map<String, Object> map = new HashMap<String, Object>();
-            map = getMapFromJson(resultMessage.toString());
+            List<Object> list = (List<Object>) JSON.parse(resultMessage.toString());
+            System.out.println(list);
         } catch (Exception e) {
-        }*/
+        }
     }
 
     /**
@@ -163,7 +162,6 @@ public class TestMyApi {
             client.executeMethod(getMethod);
             resultMessage = getMethod.getResponseBodyAsString();
             System.out.println("返回数据" + resultMessage);
-            Map<String, Object> map = new HashMap<String, Object>();
             List<Object> list = (List<Object>) JSON.parse(resultMessage.toString());
             System.out.println(list);
         } catch (Exception e) {

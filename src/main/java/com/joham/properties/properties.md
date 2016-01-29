@@ -1,0 +1,1 @@
+读取properties文件

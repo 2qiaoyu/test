@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
  */
 public class Test {
     public static void main(String[] args) throws UnknownHostException {
-        testIndexof();
+        //testIndexof();
         //getHostIp();
         //xiaoshu();
     }
@@ -61,5 +61,9 @@ public class Test {
             num = sb.toString();
         }
         System.out.println(num);
+    }
+
+    public static void test(){
+        System.out.println(Test.class.getAnnotations());
     }
 }
