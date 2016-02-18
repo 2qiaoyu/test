@@ -2,6 +2,7 @@ package com.joham.date;
 
 import org.apache.log4j.Logger;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,10 +21,8 @@ public class TestDate {
 
     public static void main(String[] args) throws Exception {
         // 定义输出日期格式
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd EEE");
-
+        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd EEE");
         Date currentDate = new Date();
-
         // 比如今天是2012-12-25
         List<Date> days = dateToWeek(currentDate);
         System.out.println("今天的日期: " + sdf.format(currentDate));
@@ -31,7 +30,8 @@ public class TestDate {
         for (Date date : days) {
             System.out.println(sdf.format(date));
         }
-        getToday();
+        getToday();*/
+        System.out.println(compare_date("2016-12-19 15:22:36","2015-12-19 15:22:35"));
     }
 
     /**
@@ -64,5 +64,26 @@ public class TestDate {
         String endTime = new SimpleDateFormat("yyyy-MM-dd EEE").format(calendar.getTime());
         System.out.println(startTime);
         System.out.println(endTime);
+    }
+
+    /**
+     * 比较日期大小
+     *
+     * @return
+     */
+    public static boolean compare_date(String nowDate, String endDate) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date dt1 = df.parse(nowDate);
+            Date dt2 = df.parse(endDate);
+            if (dt1.getTime() <= dt2.getTime()) {
+                return true;
+            } else if (dt1.getTime() > dt2.getTime()) {
+                return false;
+            }
+        } catch (Exception exception) {
+            LOGGER.error("日期对比失败！", exception);
+        }
+        return false;
     }
 }

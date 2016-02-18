@@ -1,13 +1,13 @@
 package com.joham.api;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.joham.base64.TestBase64;
 import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -17,14 +17,15 @@ import java.util.*;
  * Created by joham on 2015/9/16.
  */
 public class TestMyApi {
-    private static final Logger LOGGER = Logger.getLogger(TestMyApi.class);
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestMyApi.class);
 
     public static void main(String[] args) throws Exception {
         //login();
         //addCustomer();
         //findCustomerDetail();
         //findCustomerList();
-        test();
+        test6();
     }
 
     /**
@@ -123,6 +124,7 @@ public class TestMyApi {
      * 收藏的店铺信息
      */
     private static void test() {
+        LOGGER.info("开始执行");
         SimpleDateFormat bartDateFormat =
                 new SimpleDateFormat("YYYYMMddHHmm");
         String date = bartDateFormat.format(new Date());
@@ -137,6 +139,7 @@ public class TestMyApi {
             client.executeMethod(getMethod);
             String resultMessage = getMethod.getResponseBodyAsString();
             System.out.println("返回数据" + resultMessage);
+            LOGGER.info("查询成功");
             List<Object> list = (List<Object>) JSON.parse(resultMessage.toString());
             System.out.println(list);
         } catch (Exception e) {
@@ -220,6 +223,33 @@ public class TestMyApi {
         try {
             client.executeMethod(getMethod);
             String resultMessage = getMethod.getResponseBodyAsString();
+            System.out.println("返回数据" + resultMessage);
+            List<Object> list = (List<Object>) JSON.parse(resultMessage.toString());
+            System.out.println(list);
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * 查询指定店铺信息
+     *
+     * @throws Exception
+     */
+    private static void test6() throws Exception {
+        SimpleDateFormat bartDateFormat =
+                new SimpleDateFormat("YYYYMMddHHmm");
+        String date = bartDateFormat.format(new Date());
+        String sign = MD5Util.md5Hex("lie" + date + "PJHDZTGKVRTEARKEIFSWMFWYYMZRPW" + "ENGUQGRFPMISIIPHUSRB");
+        //添加会员信息
+        String url = "http://127.0.0.1:8082/open/selectByStoreId.htm?" +
+                "timestamp=" + date + "&userName=lie&storeId=1074&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&sign=" + sign;
+        System.out.println(url);
+        PostMethod postMethod = new PostMethod(url);
+        HttpClient client = new HttpClient();
+        try {
+            client.executeMethod(postMethod);
+            String resultMessage = postMethod.getResponseBodyAsString();
             System.out.println("返回数据" + resultMessage);
             List<Object> list = (List<Object>) JSON.parse(resultMessage.toString());
             System.out.println(list);
