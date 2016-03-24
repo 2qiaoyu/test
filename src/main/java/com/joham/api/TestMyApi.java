@@ -78,7 +78,7 @@ public class TestMyApi {
                 new SimpleDateFormat("YYYYMMddHHmm");
         String date = bartDateFormat.format(new Date());
         String url = "http://127.0.0.1:8082/open/customer/get.htm?" +
-                "customerUserName=ningpai&sign=" + MD5Util.md5Hex("lie" + date + "PJHDZTGKVRTEARKEIFSWMFWYYMZRPW" + "ENGUQGRFPMISIIPHUSRB") + "&timestamp=" + date + "&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&userName=lie";
+                "customerUserName=***&sign=" + MD5Util.md5Hex("lie" + date + "PJHDZTGKVRTEARKEIFSWMFWYYMZRPW" + "ENGUQGRFPMISIIPHUSRB") + "&timestamp=" + date + "&token=PJHDZTGKVRTEARKEIFSWMFWYYMZRPW&userName=lie";
         String resultMessage = "";
         GetMethod getMethod = new GetMethod(url);
         HttpClient client = new HttpClient();

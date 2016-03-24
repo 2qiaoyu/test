@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 public class TestRegex {
     public static void main(String[] args) {
         //System.out.println(isTelephone("025-52181263"));
-        System.out.println(isMobileNO("17712345678"));
-        //System.out.println(isNumber("0"));
+//        System.out.println(isMobileNO("17712345678"));
+        System.out.println(isNumber("-wefw"));
     }
 
     // 判断电话
