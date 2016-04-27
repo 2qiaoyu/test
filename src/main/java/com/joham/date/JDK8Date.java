@@ -1,6 +1,7 @@
 package com.joham.date;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by joham on 2016/3/22.
@@ -8,7 +9,10 @@ import java.time.*;
 public class JDK8Date {
     public static void main(String[] args) {
 //        localdate();
-        localdatetime();
+//        localdatetime();
+        System.out.println(LocalDateTime.now());
+//        System.out.println(dateToString(LocalDateTime.now()));
+//        System.out.println(stringToDate("2016-06-12 10:15:12"));
     }
 
     private static void localdate() {
@@ -35,5 +39,25 @@ public class JDK8Date {
         Instant instant = Instant.now();
         System.out.println(localDateTime);
         System.out.println(instant);
+    }
+
+    /**
+     * 日期转字符串
+     * @param localDateTime
+     */
+
+    public static String dateToString(LocalDateTime localDateTime){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return dateTimeFormatter.format(localDateTime);
+    }
+
+    /**
+     * 字符串转日期
+     * @param date
+     */
+    public static LocalDateTime stringToDate(String date){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(date,dateTimeFormatter);
+        return localDateTime;
     }
 }
