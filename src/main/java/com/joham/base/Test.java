@@ -8,9 +8,10 @@ import java.net.UnknownHostException;
  */
 public class Test {
     public static void main(String[] args) throws UnknownHostException {
-        testIndexof();
+//        testIndexof();
         //getHostIp();
         //xiaoshu();
+        testCurrentTimeMillis();
     }
 
     /**
