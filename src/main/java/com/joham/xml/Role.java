@@ -5,10 +5,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * @author		zhuc
- * @create		2013-3-29 下午2:51:52
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = { "name", "desc" })
 public class Role {

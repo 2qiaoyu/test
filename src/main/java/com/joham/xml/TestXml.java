@@ -1,8 +1,5 @@
 package com.joham.xml;
 
-/**
- * Created by joham on 2015/8/22.
- */
 public class TestXml {
     public static void main(String[] args) {
         Employee employee = new Employee();
@@ -13,7 +10,7 @@ public class TestXml {
         String xml = jaxbUtil.convertToXml(employee);
         System.out.println(xml);
         System.out.println("----------------------------------------");
-        Employee employee1 = jaxbUtil.converyToJavaBean(xml,Employee.class);
+        Employee employee1 = jaxbUtil.converyToJavaBean(xml, Employee.class);
         System.out.println(employee1.getName());
         System.out.println(employee1.getAge());
         System.out.println(employee1.getDepartment());

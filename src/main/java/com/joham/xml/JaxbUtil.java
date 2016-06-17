@@ -6,13 +6,11 @@ import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-/**
- * Created by joham on 2015/8/22.
- */
 public class JaxbUtil {
     /**
      * JavaBean转换成xml
      * 默认编码UTF-8
+     *
      * @param obj
      * @return
      */
@@ -22,6 +20,7 @@ public class JaxbUtil {
 
     /**
      * JavaBean转换成xml
+     *
      * @param obj
      * @param encoding
      * @return
@@ -46,11 +45,11 @@ public class JaxbUtil {
 
     /**
      * xml转换成JavaBean
+     *
      * @param xml
      * @param c
      * @return
      */
-    @SuppressWarnings("unchecked")
     public static <T> T converyToJavaBean(String xml, Class<T> c) {
         T t = null;
         try {

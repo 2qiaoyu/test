@@ -1,7 +1,6 @@
 package com.joham.base;
 
 /**
- * Created by joham on 2016/1/29.
  * 获得类名
  */
 public class TestName {

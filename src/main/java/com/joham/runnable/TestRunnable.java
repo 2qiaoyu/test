@@ -1,8 +1,5 @@
 package com.joham.runnable;
 
-/**
- * Created by joham on 2016/1/21.
- */
 public class TestRunnable {
     public static void main(String[] args) {
         DoSomething ds1 = new DoSomething("阿三");

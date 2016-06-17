@@ -2,9 +2,6 @@ package com.joham.array;
 
 import org.apache.commons.beanutils.ConvertUtils;
 
-/**
- * Created by joham on 2016/3/21.
- */
 public class StringToLong {
 
     public static void main(String[] args) {

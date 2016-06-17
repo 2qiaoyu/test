@@ -1,11 +1,12 @@
 package com.joham.random;
 
 import java.util.Random;
+import java.util.UUID;
 
 public class Test {
     public static void main(String[] args) {
         //System.out.println(getRandomString(8));
-        System.out.println(System.currentTimeMillis()/1000L);
+        System.out.println(System.currentTimeMillis());
     }
 
     /**

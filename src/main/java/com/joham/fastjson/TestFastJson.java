@@ -8,7 +8,6 @@ import java.util.*;
 
 /**
  * fastjson map,list使用
- * Created by joham on 2016/1/19.
  */
 public class TestFastJson {
     public static void main(String[] args) {
@@ -75,11 +74,11 @@ public class TestFastJson {
     /**
      * 日期格式化
      */
-    public static void test2(){
+    public static void test2() {
         Date date = new Date();
         String json = JSON.toJSONString(date);
         System.out.println(json);
         System.out.println(JSON.toJSONString(date, SerializerFeature.WriteDateUseDateFormat));
-        System.out.println(JSON.toJSONStringWithDateFormat(date,"yyyy-MM-dd",SerializerFeature.WriteDateUseDateFormat));
+        System.out.println(JSON.toJSONStringWithDateFormat(date, "yyyy-MM-dd", SerializerFeature.WriteDateUseDateFormat));
     }
 }

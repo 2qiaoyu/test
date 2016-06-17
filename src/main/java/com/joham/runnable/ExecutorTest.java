@@ -5,9 +5,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by joham on 2016/1/21.
- */
 public class ExecutorTest {
     public static void main(String args[]) {
         Random random = new Random();

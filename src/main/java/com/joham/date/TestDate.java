@@ -9,9 +9,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by joham on 2015/10/13.
- */
 public class TestDate {
 
     /**
@@ -31,7 +28,7 @@ public class TestDate {
             System.out.println(sdf.format(date));
         }
         getToday();*/
-        System.out.println(compare_date("2016-12-19 15:22:36","2015-12-19 15:22:35"));
+        System.out.println(compare_date("2016-12-19 15:22:36", "2015-12-19 15:22:35"));
     }
 
     /**

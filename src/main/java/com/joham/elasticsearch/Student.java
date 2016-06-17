@@ -1,13 +1,13 @@
-package com.joham.json;
+package com.joham.elasticsearch;
 
 import lombok.Data;
 
 @Data
-public class Employee {
+public class Student {
+
+    private Long id;
 
     private String name;
 
     private Integer age;
-
-    private String department;
 }

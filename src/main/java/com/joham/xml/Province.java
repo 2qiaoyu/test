@@ -5,12 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * @author		zhuc
- * @create		2013-3-29 下午2:56:03
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "name", "provCity" })
+@XmlType(propOrder = {"name", "provCity"})
 public class Province {
 
     @XmlElement(name = "province_name")

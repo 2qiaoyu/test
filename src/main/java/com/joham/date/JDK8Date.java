@@ -3,9 +3,6 @@ package com.joham.date;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Created by joham on 2016/3/22.
- */
 public class JDK8Date {
     public static void main(String[] args) {
 //        localdate();
@@ -35,7 +32,7 @@ public class JDK8Date {
     }
 
     public static void localdatetime() {
-        LocalDateTime localDateTime = LocalDateTime.of(2016, Month.MARCH,10,20,30);
+        LocalDateTime localDateTime = LocalDateTime.of(2016, Month.MARCH, 10, 20, 30);
         Instant instant = Instant.now();
         System.out.println(localDateTime);
         System.out.println(instant);
@@ -43,21 +40,23 @@ public class JDK8Date {
 
     /**
      * 日期转字符串
+     *
      * @param localDateTime
      */
 
-    public static String dateToString(LocalDateTime localDateTime){
+    public static String dateToString(LocalDateTime localDateTime) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateTimeFormatter.format(localDateTime);
     }
 
     /**
      * 字符串转日期
+     *
      * @param date
      */
-    public static LocalDateTime stringToDate(String date){
+    public static LocalDateTime stringToDate(String date) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(date,dateTimeFormatter);
+        LocalDateTime localDateTime = LocalDateTime.parse(date, dateTimeFormatter);
         return localDateTime;
     }
 }

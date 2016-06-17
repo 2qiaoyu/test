@@ -2,9 +2,6 @@ package com.joham.date;
 
 import java.util.Date;
 
-/**
- * Created by joham on 2016/1/29.
- */
 public class Test {
     public static void main(String[] args) {
         /**
@@ -58,11 +55,11 @@ public class Test {
         /**
          * 获取两个日期相差的天数
          */
-        System.out.println(DateUtil.getIntervalDays("2016-1-20","2016-1-29"));
+        System.out.println(DateUtil.getIntervalDays("2016-1-20", "2016-1-29"));
 
         /**
          * 获取期间的年龄
          */
-        System.out.println(DateUtil.getAge(new Date(),DateUtil.StringToDate("1988-04-19")));
+        System.out.println(DateUtil.getAge(new Date(), DateUtil.StringToDate("1988-04-19")));
     }
 }

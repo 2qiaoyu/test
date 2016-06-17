@@ -14,18 +14,15 @@ import java.io.OutputStreamWriter;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by joham on 2016/1/14.
- */
 public class TestDom4J {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         testStringXml();
     }
 
     /**
      * 本地xml
      */
-    public void testLocalXml() throws DocumentException{
+    public void testLocalXml() throws DocumentException {
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(new File("D:/apache-tomcat-7.0.35/conf/server.xml"));
         Element element = document.getRootElement();
@@ -33,12 +30,12 @@ public class TestDom4J {
         System.out.println(element.attribute("port").getValue());
         System.out.println(element.element("Listener").attribute("SSLEngine").getValue());
         System.out.println(element.element("GlobalNamingResources").element("Resource").attribute("auth").getValue());
-        for(Iterator iterator = element.elementIterator();iterator.hasNext();){
-            System.out.println((Element)iterator.next());
+        for (Iterator iterator = element.elementIterator(); iterator.hasNext(); ) {
+            System.out.println((Element) iterator.next());
         }
     }
 
-    public static void testStringXml() throws Exception{
+    public static void testStringXml() throws Exception {
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(new File("D:/a.xml"));
         //获取根节点元素对象

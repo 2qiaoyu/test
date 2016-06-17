@@ -6,7 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by joham on 2015/8/7.
  * 自定义注解类编写的一些规则:
      1. Annotation型定义为@interface, 所有的Annotation会自动继承java.lang.Annotation这一接口,并且不能再去继承别的类或是接口.
      2. 参数成员只能用public或默认(default)这两个访问权修饰

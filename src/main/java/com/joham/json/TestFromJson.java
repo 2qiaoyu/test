@@ -6,9 +6,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Created by joham on 2015/8/22.
- */
 public class TestFromJson {
     public static void main(String[] args) {
         Employee employee = new Employee();

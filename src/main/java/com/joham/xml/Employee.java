@@ -2,9 +2,6 @@ package com.joham.xml;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * Created by joham on 2015/7/25.
- */
 @XmlRootElement
 public class Employee {
     private String name;

@@ -1,8 +1,5 @@
 package com.joham.xml;
-/**
- * @author		zhuc
- * @create		2013-3-29 下午2:52:00
- */
+
 public class JaxbTest2 {
     public static void main(String[] args) {
         Student student = new Student();

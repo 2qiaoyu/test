@@ -3,11 +3,6 @@ package com.joham.xml;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * @author		zhuc
- * @create		2013-3-29 下午2:56:11
- */
 public class JaxbTest3 {
     public static void main(String[] args) {
         Country country = new Country();

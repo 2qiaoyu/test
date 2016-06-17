@@ -1,7 +1,6 @@
 package com.joham.base;
 
 /**
- * Created by joham on 2016/1/13.
  * 验证身份证是否合法
  */
 public class TestIDCard {

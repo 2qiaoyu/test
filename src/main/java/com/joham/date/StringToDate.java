@@ -3,9 +3,6 @@ package com.joham.date;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by joham on 2016/3/21.
- */
 public class StringToDate {
 
     public static void main(String[] args) {
@@ -26,11 +23,11 @@ public class StringToDate {
     /**
      * 字符串转Date
      */
-    public static Date strToDate(String str){
+    public static Date strToDate(String str) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = null;
-        try{
-             date = simpleDateFormat.parse(str);
+        try {
+            date = simpleDateFormat.parse(str);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,10 +7,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * @author		zhuc
- * @create		2013-3-29 下午2:51:44
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "student")
 @XmlType(propOrder = {})
