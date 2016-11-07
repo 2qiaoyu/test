@@ -26,14 +26,14 @@ public class TestEs {
 
     public static void main(String[] args) {
 //        createIndex();
-        searchIndex();
 //        bulkCreateIndex();
 //        System.out.println(indexExist("11"));
 //        delIndex();
 //        bulkDelIndex();
-//        simpleSearch();
-//        delIndexByName();
+        delIndexByName();
 //        updateIndex();
+//        searchIndex();
+//        simpleSearch();
     }
 
     /**
@@ -41,12 +41,12 @@ public class TestEs {
      */
     private static void createIndex() {
         Student student = new Student();
-        student.setId(2L);
-        student.setName("测试2");
-        student.setAge(20);
+        student.setId(21L);
+        student.setName("测试21");
+        student.setAge(21);
         String json = JSON.toJSONString(student);
         //索引名称,类型名称,文档ID
-        IndexResponse indexResponse = client.prepareIndex("test", "student", student.getId().toString()).setSource(json).execute().actionGet();
+        IndexResponse indexResponse = client.prepareIndex("test", "student", student.getId().toString()).setRefresh(true).setSource(json).execute().actionGet();
         System.out.println("索引名称" + indexResponse.getIndex());
         System.out.println("类型名称" + indexResponse.getType());
         System.out.println("文档ID" + indexResponse.getId());
@@ -56,7 +56,7 @@ public class TestEs {
      * 根据id查询一条记录
      */
     private static void searchIndex() {
-        GetResponse getResponse = client.prepareGet("test", "student", "0").get();
+        GetResponse getResponse = client.prepareGet("test", "student", "21").get();
         ObjectMapper objectMapper = new ObjectMapper();
         Student student = new Student();
         try {
@@ -80,11 +80,11 @@ public class TestEs {
             String json = JSON.toJSONString(student);
             IndexRequest request = client.prepareIndex("test", "student", student.getId().toString()).setSource(json).request();
             bulkRequestBuilder.add(request);
-        }
-        BulkResponse bulkResponse = bulkRequestBuilder.execute().actionGet();
-        if (bulkResponse.hasFailures()) {
-            System.out.println("批量创建索引失败");
-        }
+    }
+    BulkResponse bulkResponse = bulkRequestBuilder.execute().actionGet();
+    if (bulkResponse.hasFailures()) {
+        System.out.println("批量创建索引失败");
+    }
         System.out.println("批量创建索引成功");
     }
 
@@ -123,7 +123,7 @@ public class TestEs {
      * 根据id删除索引
      */
     private static void delIndex() {
-        client.prepareDelete("test", "student", "4").execute().actionGet();
+        client.prepareDelete("app-subject", "channel", "AVaSzAX1IV-PRr1Gg-9z").execute().actionGet();
     }
 
     /**
@@ -142,6 +142,7 @@ public class TestEs {
      */
     private static void delIndexByName() {
         client.admin().indices().prepareDeleteMapping("test").setType("student").execute().actionGet();
+//        client.admin().indices().prepareDeleteMapping("luokeke-app-site").setType("floors").execute().actionGet();
     }
 
     /**
@@ -149,9 +150,9 @@ public class TestEs {
      */
     private static void updateIndex() {
         Student student = new Student();
-        student.setId(0L);
-        student.setName("测试修改");
-        student.setAge(20);
-        client.prepareUpdate("test", "student", "0").setDoc(JSON.toJSONString(student)).execute().actionGet();
+        student.setId(21L);
+        student.setName("测试修改1");
+        student.setAge(21);
+        client.prepareUpdate("test", "student", "21").setDoc(JSON.toJSONString(student)).execute().actionGet();
     }
 }
