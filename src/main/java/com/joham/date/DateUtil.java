@@ -478,7 +478,7 @@ public class DateUtil {
      * 增加日期的分钟。失败返回null。
      *
      * @param date      日期
-     * @param dayAmount 增加数量。可为负数
+     * @param minuteAmount 增加数量。可为负数
      * @return 增加分钟后的日期
      */
     public static Date addMinute(Date date, int minuteAmount) {
@@ -489,7 +489,7 @@ public class DateUtil {
      * 增加日期的秒钟。失败返回null。
      *
      * @param date      日期字符串
-     * @param dayAmount 增加数量。可为负数
+     * @param secondAmount 增加数量。可为负数
      * @return 增加秒钟后的日期字符串
      */
     public static String addSecond(String date, int secondAmount) {
@@ -500,7 +500,7 @@ public class DateUtil {
      * 增加日期的秒钟。失败返回null。
      *
      * @param date      日期
-     * @param dayAmount 增加数量。可为负数
+     * @param secondAmount 增加数量。可为负数
      * @return 增加秒钟后的日期
      */
     public static Date addSecond(Date date, int secondAmount) {

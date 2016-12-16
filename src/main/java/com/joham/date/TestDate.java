@@ -18,17 +18,17 @@ public class TestDate {
 
     public static void main(String[] args) throws Exception {
         // 定义输出日期格式
-        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd EEE");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd EEE");
         Date currentDate = new Date();
-        // 比如今天是2012-12-25
         List<Date> days = dateToWeek(currentDate);
         System.out.println("今天的日期: " + sdf.format(currentDate));
         LOGGER.info("今天的日期: " + sdf.format(currentDate));
         for (Date date : days) {
             System.out.println(sdf.format(date));
         }
-        getToday();*/
+        getToday();
         System.out.println(compare_date("2016-12-19 15:22:36", "2015-12-19 15:22:35"));
+        System.out.println(DateUtil.getWeek(new Date()));
     }
 
     /**
@@ -64,7 +64,7 @@ public class TestDate {
     }
 
     /**
-     * 比较日期大小
+     * 比较日期大小(两种方式)
      *
      * @return
      */
@@ -78,6 +78,10 @@ public class TestDate {
             } else if (dt1.getTime() > dt2.getTime()) {
                 return false;
             }
+//            if(dt1.before(dt2))
+//                return true;
+//            else
+//                return false;
         } catch (Exception exception) {
             LOGGER.error("日期对比失败！", exception);
         }

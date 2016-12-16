@@ -1,10 +1,12 @@
 package com.joham.elasticsearch;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequestBuilder;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
+import org.elasticsearch.action.admin.indices.exists.types.TypesExistsRequest;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.get.GetResponse;
@@ -18,6 +20,9 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestEs {
 
     private final static String ipAddress = "172.19.26.190";
@@ -26,14 +31,10 @@ public class TestEs {
 
     public static void main(String[] args) {
 //        createIndex();
-//        bulkCreateIndex();
-//        System.out.println(indexExist("11"));
-//        delIndex();
-//        bulkDelIndex();
-        delIndexByName();
-//        updateIndex();
 //        searchIndex();
-//        simpleSearch();
+//        updateIndex();
+//        delIndex();
+        setVersion("zhumeng-app-site", "versions");
     }
 
     /**
@@ -67,6 +68,25 @@ public class TestEs {
         System.out.println(student.getId() + "" + student.getName());
     }
 
+
+    /**
+     * 根据id修改索引
+     */
+    private static void updateIndex() {
+        Student student = new Student();
+        student.setId(21L);
+        student.setName("测试修改1");
+        student.setAge(21);
+        client.prepareUpdate("test", "student", "21").setDoc(JSON.toJSONString(student)).execute().actionGet();
+    }
+
+    /**
+     * 根据id删除索引
+     */
+    private static void delIndex() {
+        client.prepareDelete("test", "student", "21").execute().actionGet();
+    }
+
     /**
      * 批量创建索引
      */
@@ -80,12 +100,13 @@ public class TestEs {
             String json = JSON.toJSONString(student);
             IndexRequest request = client.prepareIndex("test", "student", student.getId().toString()).setSource(json).request();
             bulkRequestBuilder.add(request);
-    }
-    BulkResponse bulkResponse = bulkRequestBuilder.execute().actionGet();
-    if (bulkResponse.hasFailures()) {
-        System.out.println("批量创建索引失败");
-    }
-        System.out.println("批量创建索引成功");
+        }
+        BulkResponse bulkResponse = bulkRequestBuilder.execute().actionGet();
+        if (bulkResponse.hasFailures()) {
+            System.out.println("批量创建索引失败");
+        } else {
+            System.out.println("批量创建索引成功");
+        }
     }
 
     /**
@@ -120,10 +141,15 @@ public class TestEs {
     }
 
     /**
-     * 根据id删除索引
+     * 判断类型是否存在
+     *
+     * @param index
+     * @param type
+     * @return
      */
-    private static void delIndex() {
-        client.prepareDelete("app-subject", "channel", "AVaSzAX1IV-PRr1Gg-9z").execute().actionGet();
+    public static boolean isTypeExist(String index, String type) {
+        return client.admin().indices().
+                typesExists(new TypesExistsRequest(new String[]{index}, type)).actionGet().isExists();
     }
 
     /**
@@ -146,13 +172,22 @@ public class TestEs {
     }
 
     /**
-     * 根据id修改索引
+     * 修改版本信息
      */
-    private static void updateIndex() {
-        Student student = new Student();
-        student.setId(21L);
-        student.setName("测试修改1");
-        student.setAge(21);
-        client.prepareUpdate("test", "student", "21").setDoc(JSON.toJSONString(student)).execute().actionGet();
+
+    private static void setVersion(String index, String type) {
+        //初始化版本信息
+        client.admin().indices().prepareDeleteMapping(index).setType(type).execute().actionGet();
+        BulkRequestBuilder bulkRequestBuilder = client.prepareBulk();
+        Version version = new Version("ios", "1.0.0", 1476798884845L, "http://www.baidu.com", null);
+        Version version1 = new Version("android", "1.0.0", 1476798884845L, "http://www.baidu.com", null);
+        bulkRequestBuilder.add(client.prepareIndex(index, type).setSource(JSON.toJSONString(version)).request());
+        bulkRequestBuilder.add(client.prepareIndex(index, type).setSource(JSON.toJSONString(version1)).request());
+        BulkResponse bulkResponse = bulkRequestBuilder.execute().actionGet();
+        if (bulkResponse.hasFailures()) {
+            System.out.println("修改版本信息成功");
+        } else {
+            System.out.println("修改版本信息失败");
+        }
     }
 }

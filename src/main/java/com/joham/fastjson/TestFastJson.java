@@ -59,6 +59,7 @@ public class TestFastJson {
         System.out.println(json);
         Map map1 = JSON.parseObject(json);
         System.out.println("--------------------Json转换为Map----------------------");
+        System.out.println(map1);
         for (Object o : map1.entrySet()) {
             Map.Entry<String, String> entry = (Map.Entry<String, String>) o;
             System.out.println(entry.getKey() + "--->" + entry.getValue());
