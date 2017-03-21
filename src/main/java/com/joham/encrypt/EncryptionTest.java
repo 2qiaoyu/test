@@ -2,6 +2,8 @@ package com.joham.encrypt;
 
 import org.junit.Test;
 
+import java.util.Map;
+
 /**
  * 加密工具类测试类
  *
@@ -85,5 +87,63 @@ public class EncryptionTest {
         System.out.println("AES加密后:" + enAESs);
         String deAESs = Encryption.AESDecrypt(enAESs, key, "1234567890123456");
         System.out.println("AES解密后:" + deAESs);
+    }
+
+    /**
+     * RSA加密解密
+     */
+    @Test
+    public void testRSA() {
+        //初始化一对公私钥
+        Map<String, Object> keyMap = Encryption.initRSAKey();
+        String RSAPublicKey = Encryption.getRSAPublicKey(keyMap);
+        System.out.println("公钥:" + RSAPublicKey);
+        String RSAPrivateKey = Encryption.getRSAPrivateKey(keyMap);
+        System.out.println("私钥" + RSAPrivateKey);
+        //公钥加密
+        String enRSAsByPublic = Encryption.RSAEncryptByPublicKey(DATA, RSAPublicKey);
+        System.out.println("公钥加密后:" + enRSAsByPublic);
+        //私钥解密
+        String deRSAsByPrivate = Encryption.RSADecryptByPrivateKey(enRSAsByPublic, RSAPrivateKey);
+        System.out.println("私钥解密后:" + deRSAsByPrivate);
+
+        //私钥加密
+        String enRSAsByPrivate = Encryption.RSAEncryptByPrivateKey(DATA, RSAPrivateKey);
+        System.out.println("私钥加密后:" + enRSAsByPrivate);
+        //公钥解密
+        String deRSAsByPublic = Encryption.RSADecryptByPublicKey(enRSAsByPrivate, RSAPublicKey);
+        System.out.println("公钥解密后:" + deRSAsByPublic);
+
+        //私钥生成签名
+        String enSigns = Encryption.RSASign(enRSAsByPrivate, RSAPrivateKey);
+        //公钥验证签名是否正确
+        boolean iSsignTrue = Encryption.RSAVerify(enRSAsByPrivate, RSAPublicKey, enSigns);
+        System.out.println("验证签名:" + iSsignTrue);
+    }
+
+    /**
+     * DH加密解密
+     */
+    @Test
+    public void testDH() {
+        //初始化甲方公私钥
+        Map<String, Object> keyMap = Encryption.initDHKey();
+        String DHPublicKey = Encryption.getDHPublicKey(keyMap);
+        System.out.println("甲方公钥:" + DHPublicKey);
+        String DHPrivateKey = Encryption.getDHPrivateKey(keyMap);
+        System.out.println("甲方私钥:" + DHPrivateKey);
+
+        //根据甲方公钥生成乙方公私钥
+        Map<String, Object> keyMap1 = Encryption.initDHKey(DHPublicKey);
+        String DHPublicKey1 = Encryption.getDHPublicKey(keyMap1);
+        System.out.println("乙方公钥:" + DHPublicKey1);
+        String DHPrivateKey1 = Encryption.getDHPrivateKey(keyMap1);
+        System.out.println("乙方私钥:" + DHPrivateKey1);
+        //通过甲方公钥乙方私钥DH加密
+        String enDHs = Encryption.DHEncrypt(DATA, DHPublicKey, DHPrivateKey1);
+        System.out.println("甲方公钥乙方私钥DH加密后:" + enDHs);
+        //通过乙方公钥甲方私钥DH解密
+        String deDHs = Encryption.DHDecrypt(enDHs, DHPublicKey1, DHPrivateKey);
+        System.out.println("乙方公钥甲方私钥DH解密后:" + deDHs);
     }
 }
