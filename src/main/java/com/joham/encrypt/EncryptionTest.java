@@ -14,6 +14,12 @@ public class EncryptionTest {
     //待加密文件
     public static final String DATA = "Hello World!";
 
+    //keystore证书地址
+    public static final String KEYSTORE = "/Users/joham/Projects/test/src/main/java/com/joham/encrypt/my-release-key.keystore";
+
+    //cer证书地址
+    public static final String CER = "/Users/joham/Projects/test/src/main/java/com/joham/encrypt/my.cer";
+
     /**
      * MD5加密
      */
@@ -145,5 +151,29 @@ public class EncryptionTest {
         //通过乙方公钥甲方私钥DH解密
         String deDHs = Encryption.DHDecrypt(enDHs, DHPublicKey1, DHPrivateKey);
         System.out.println("乙方公钥甲方私钥DH解密后:" + deDHs);
+    }
+
+    /**
+     * KeyStore证书加密
+     */
+    @Test
+    public void testKeyStore() {
+        //KeyStore证书私钥加密
+        String enKeyStore = Encryption.encryptByPrivateKey(DATA, KEYSTORE, "my-key-alias", "123456");
+        System.out.println("KeyStore证书私钥加密后:" + enKeyStore);
+        ///cer证书公钥解密
+        String deKeyStore = Encryption.decryptByPublicKey(enKeyStore, CER);
+        System.out.println("cer证书公钥解密后:" + deKeyStore);
+        //KeyStore证书公钥加密
+        String enKeyStore1 = Encryption.encryptByPublicKey(DATA, CER);
+        System.out.println("KeyStore证书公钥加密后:" + enKeyStore1);
+        //cer证书私钥解密
+        String deKeyStore1 = Encryption.decryptByPrivateKey(enKeyStore1, KEYSTORE, "my-key-alias", "123456");
+        System.out.println("KeyStore证书公钥加密后:" + deKeyStore1);
+        //生成签名
+        String sign = Encryption.sign(enKeyStore, KEYSTORE, "my-key-alias", "123456");
+        System.out.println("签名" + sign);
+        //验证签名是否正确
+        System.out.println("验证签名是否正确:" + Encryption.verify(enKeyStore, sign, CER));
     }
 }
