@@ -4,3 +4,5 @@
 target
 api
 .DS_store
+*.keystore
+*.cer
