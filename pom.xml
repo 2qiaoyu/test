@@ -108,6 +108,11 @@
             <artifactId>jmh-core</artifactId>
             <version>0.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
+            <version>5.9.0</version>
+        </dependency>
     </dependencies>
 
     <build>
