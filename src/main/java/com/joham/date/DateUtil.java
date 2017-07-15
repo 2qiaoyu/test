@@ -30,11 +30,9 @@ public class DateUtil {
         SimpleDateFormat dateFormat = threadLocal.get();
         if (dateFormat == null) {
             synchronized (object) {
-                if (dateFormat == null) {
-                    dateFormat = new SimpleDateFormat(pattern);
-                    dateFormat.setLenient(false);
-                    threadLocal.set(dateFormat);
-                }
+                dateFormat = new SimpleDateFormat(pattern);
+                dateFormat.setLenient(false);
+                threadLocal.set(dateFormat);
             }
         }
         dateFormat.applyPattern(pattern);
@@ -477,7 +475,7 @@ public class DateUtil {
     /**
      * 增加日期的分钟。失败返回null。
      *
-     * @param date      日期
+     * @param date         日期
      * @param minuteAmount 增加数量。可为负数
      * @return 增加分钟后的日期
      */
@@ -488,7 +486,7 @@ public class DateUtil {
     /**
      * 增加日期的秒钟。失败返回null。
      *
-     * @param date      日期字符串
+     * @param date         日期字符串
      * @param secondAmount 增加数量。可为负数
      * @return 增加秒钟后的日期字符串
      */
@@ -499,7 +497,7 @@ public class DateUtil {
     /**
      * 增加日期的秒钟。失败返回null。
      *
-     * @param date      日期
+     * @param date         日期
      * @param secondAmount 增加数量。可为负数
      * @return 增加秒钟后的日期
      */
