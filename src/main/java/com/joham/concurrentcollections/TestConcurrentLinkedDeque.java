@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  *
  * @author qiaoyu
  */
-public class Test {
+public class TestConcurrentLinkedDeque {
     public static void main(String[] args) {
         ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
         Thread threads[] = new Thread[100];
