@@ -1,4 +1,4 @@
-package com.joham.lambda;
+package com.joham.stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

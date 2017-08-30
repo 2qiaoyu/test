@@ -2,6 +2,8 @@ package com.joham.base;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Test {
     public static void main(String[] args) throws UnknownHostException {
@@ -9,6 +11,11 @@ public class Test {
         //getHostIp();
         //xiaoshu();
         testCurrentTimeMillis();
+        Long time = 1497783879000L;
+        getDateFromCurrentTimeMillis(time);
+//        int size = 221929;
+//        int k = (size / 10000) * 10000 + size % 10000;
+//        System.out.println(k);
     }
 
     /**
@@ -64,5 +71,16 @@ public class Test {
 
     public static void test() {
         System.out.println(Test.class.getAnnotations());
+    }
+
+    /**
+     * 根据CurrentTimeMillis得到精确时间
+     *
+     * @param time
+     */
+    public static void getDateFromCurrentTimeMillis(Long time) {
+        Date date = new Date(time);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(simpleDateFormat.format(date));
     }
 }
