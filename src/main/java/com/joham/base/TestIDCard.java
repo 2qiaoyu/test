@@ -66,8 +66,9 @@ public class TestIDCard {
      * @return 校验因子为：{ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10,5, 8, 4, 2 };
      */
     public boolean isValid(String idCard) {
-        if (null == idCard || idCard.length() != 18)
+        if (null == idCard || idCard.length() != 18) {
             return false; // 验证长度
+        }
         int sum = 0, regionCode = 0, dateCode = 0;
         char[] arr = idCard.toCharArray();
         //计算与校验码对应的值'0'对应ASCII值为48，校验因子总和100.
@@ -86,11 +87,13 @@ public class TestIDCard {
                 || arr[7] < 48 || arr[8] < 48 || arr[9] < 48 || arr[10] < 48
                 || arr[11] < 48 || arr[12] < 48 || arr[13] < 48 || arr[14] < 48
                 || arr[15] < 48 || arr[16] < 48 || (arr[17] < 88 && arr[17] > 57)
-                || arr[17] < 48 || arr[17] > 88)
+                || arr[17] < 48 || arr[17] > 88) {
             return false;
+        }
         // 验证第18位校验码
-        if (sum % 11 != last[arr[17] - 48])
+        if (sum % 11 != last[arr[17] - 48]) {
             return false;
+        }
         //获取省市县片段，5333328=111111*48
         regionCode = arr[0] * 100000 + arr[1] * 10000 + arr[2] * 1000
                 + arr[3] * 100 + arr[4] * 10 + arr[5] - 5333328;
@@ -123,14 +126,17 @@ public class TestIDCard {
 //  }
     public static void main(String[] args) {//测试
         long t1 = System.currentTimeMillis();
-        for (int i = 0; i < 1300000000; i++)
+        for (int i = 0; i < 1300000000; i++) {
             TestIDCard.getInstance().isValid("36062219800101325X");
+        }
         long t2 = System.currentTimeMillis();
         System.out.println("方法耗时" + (t2 - t1) / 1000 + "秒");
     }
 
     static {
-        for (int j = 0, len = verifyLastData.length(); j < len; j++) last[verifyLastData.charAt(j) - 48] = j;
+        for (int j = 0, len = verifyLastData.length(); j < len; j++) {
+            last[verifyLastData.charAt(j) - 48] = j;
+        }
         for (int year = 1900; year < 2015; year++) {//日期数据加载
             for (int month = 1; month <= 12; month++) {
                 for (int day = 1; day <= daysInMonth(year, month); day++) {
@@ -343,7 +349,9 @@ public class TestIDCard {
                 654221, 654222, 654223, 654227, 654301, 654302, 654321, 654327, 659001, 659005};
         for (int i = 0, len = regionArray.length / 2; i < len; i++) {
             for (int j = regionArray[2 * i]; j < regionArray[2 * i + 1]; j++)//压缩的省市县数据解压
+            {
                 regions[j] = true;
+            }
         }
     }
 }

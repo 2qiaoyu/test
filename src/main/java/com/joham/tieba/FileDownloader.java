@@ -20,10 +20,14 @@ public class FileDownloader implements Runnable {
         this(httpUrl);
         this.path = Path;
         File f = new File("Image");
-        if (!f.exists()) f.mkdir();
+        if (!f.exists()) {
+            f.mkdir();
+        }
         f = null;
         File fi = new File("Image\\" + path);
-        if (!fi.exists()) fi.mkdir();
+        if (!fi.exists()) {
+            fi.mkdir();
+        }
         fi = null;
     }
 

@@ -22,7 +22,7 @@ public class Tieba {
             Elements links = doc.select("a[href*=/p/]");
             HashMap<String, String> hs = new HashMap<String, String>();
             for (Element link : links) {
-                if (link.attr("abs:title") != null && (!link.attr("abs:title").equals(""))) {
+                if (link.attr("abs:title") != null && (!"".equals(link.attr("abs:title")))) {
                     hs.put(link.attr("abs:href"), link.attr("abs:title").replace("http://tieba.baidu.com/", "").replace("/", "").replace("\\", ""));
                 }
             }

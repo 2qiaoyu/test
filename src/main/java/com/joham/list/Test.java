@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Test {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         List<Book> list = new ArrayList<Book>(); // 数组序列
         Book b1 = new Book(10000, "红楼梦", 150.86, new GregorianCalendar(2009,
                 01, 25), "曹雪芹、高鄂");
@@ -46,6 +46,7 @@ public class Test {
 
     // 自定义比较器：按书的价格排序
     static class PriceComparator implements Comparator {
+        @Override
         public int compare(Object object1, Object object2) {// 实现接口中的方法
             Book p1 = (Book) object1; // 强制转换
             Book p2 = (Book) object2;
@@ -55,6 +56,7 @@ public class Test {
 
     // 自定义比较器：按书出版时间来排序
     static class CalendarComparator implements Comparator {
+        @Override
         public int compare(Object object1, Object object2) {// 实现接口中的方法
             Book p1 = (Book) object1; // 强制转换
             Book p2 = (Book) object2;

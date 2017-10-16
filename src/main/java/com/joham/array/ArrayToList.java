@@ -17,7 +17,7 @@ public class ArrayToList {
     /**
      * 数组转List
      */
-    public static List<String> arrayToList(String array[]) {
+    public static List<String> arrayToList(String[] array) {
         return Arrays.asList(array);
     }
 

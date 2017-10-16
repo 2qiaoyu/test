@@ -15,6 +15,7 @@ public class TestPrint {
     private String threadPrintName = "A";
 
     class A implements Runnable {
+        @Override
         public void run() {
             try {
                 lock.lock();
@@ -37,6 +38,7 @@ public class TestPrint {
     }
 
     class B implements Runnable {
+        @Override
         public void run() {
             try {
                 lock.lock();
@@ -58,6 +60,7 @@ public class TestPrint {
     }
 
     class C implements Runnable {
+        @Override
         public void run() {
             try {
                 lock.lock();

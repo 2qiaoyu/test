@@ -53,7 +53,7 @@ public class TestToJson {
         jsonConfig.setJsonPropertyFilter(new PropertyFilter() {
             @Override
             public boolean apply(Object source, String name, Object value) {
-                return source instanceof Employee && name.equals("age");
+                return source instanceof Employee && "age".equals(name);
             }
         });
         JSONObject jsonObject = JSONObject.fromObject(employee, jsonConfig);

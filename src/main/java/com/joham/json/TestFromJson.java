@@ -14,7 +14,7 @@ public class TestFromJson {
         employee.setDepartment("财务");
         JSONObject jsonObject = JSONObject.fromObject(employee);
         System.out.println("json:"+jsonObject);
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String,Object> map = new HashMap<>(16);
         map=getMapFromJson(jsonObject.toString());
         System.out.println("map:");
         System.out.println("age:"+map.get("age"));

@@ -39,7 +39,9 @@ public class TiebaDownloader implements Runnable {
             Statement statement = connection.createStatement();
             statement.executeUpdate("create table  if not exists `tieba`  (id int(10) primary key AUTO_INCREMENT, url varchar(200))engine=INNODB default charset=utf8");
             statement.executeUpdate("ALTER TABLE tieba ADD INDEX (url)");
-            if (statement != null) statement.close();
+            if (statement != null) {
+                statement.close();
+            }
         } catch (SQLException e) {
             System.err.println("数据库连接失败，请检查数据库及连接字符串");
         }
@@ -64,12 +66,13 @@ public class TiebaDownloader implements Runnable {
         } catch (InterruptedException e) {
             System.err.println("线程池等待失败");
         }
-        if (connection != null)
+        if (connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {
                 System.err.println("数据库连接关闭失败");
             }
+        }
         pool.shutdown();
         System.out.println("线程池关闭");
 
@@ -137,18 +140,20 @@ public class TiebaDownloader implements Runnable {
         } catch (SQLException e) {
             System.err.println("出错语句为:" + SQL);
         } finally {
-            if (rs != null)
+            if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException e) {
                     System.err.println("关闭ResultSet时出错");
                 }
-            if (statement != null)
+            }
+            if (statement != null) {
                 try {
                     statement.close();
                 } catch (SQLException e) {
                     System.err.println("关闭Statement时出错");
                 }
+            }
         }
         return false;
     }
@@ -168,12 +173,13 @@ public class TiebaDownloader implements Runnable {
         } catch (SQLException e) {
             System.err.println("插入数据库时出错");
         } finally {
-            if (statement != null)
+            if (statement != null) {
                 try {
                     statement.close();
                 } catch (SQLException e) {
                     System.err.println("关闭Statement时出错");
                 }
+            }
         }
     }
 }

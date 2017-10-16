@@ -41,8 +41,9 @@ public class Mail {
      */
     public void setSmtpHost(String hostName) {
         System.out.println("设置系统属性：mail.smtp.host = " + hostName);
-        if (props == null)
+        if (props == null) {
             props = System.getProperties(); //获得系统属性对象
+        }
         props.put("mail.smtp.host", hostName); //设置SMTP主机
     }
 
@@ -80,7 +81,9 @@ public class Mail {
      */
     public void setNeedAuth(boolean need) {
         System.out.println("设置smtp身份认证：mail.smtp.auth = " + need);
-        if (props == null) props = System.getProperties();
+        if (props == null) {
+            props = System.getProperties();
+        }
         if (need) {
             props.put("mail.smtp.auth", "true");
         } else {
@@ -181,7 +184,9 @@ public class Mail {
      * @param to String
      */
     public boolean setTo(String to) {
-        if (to == null) return false;
+        if (to == null) {
+            return false;
+        }
         try {
             mimeMsg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             return true;
@@ -196,7 +201,9 @@ public class Mail {
      * @param copyto String
      */
     public boolean setCopyTo(String copyto) {
-        if (copyto == null) return false;
+        if (copyto == null) {
+            return false;
+        }
         try {
             mimeMsg.setRecipients(Message.RecipientType.CC, (Address[]) InternetAddress.parse(copyto));
             return true;
@@ -247,13 +254,23 @@ public class Mail {
         Mail theMail = new Mail(smtp);
         theMail.setNeedAuth(true); //需要验证
 
-        if (!theMail.setSubject(subject)) return false;
-        if (!theMail.setBody(content)) return false;
-        if (!theMail.setTo(to)) return false;
-        if (!theMail.setFrom(from)) return false;
+        if (!theMail.setSubject(subject)) {
+            return false;
+        }
+        if (!theMail.setBody(content)) {
+            return false;
+        }
+        if (!theMail.setTo(to)) {
+            return false;
+        }
+        if (!theMail.setFrom(from)) {
+            return false;
+        }
         theMail.setNamePass(username, password);
 
-        if (!theMail.sendOut()) return false;
+        if (!theMail.sendOut()) {
+            return false;
+        }
         return true;
     }
 
@@ -274,14 +291,26 @@ public class Mail {
         Mail theMail = new Mail(smtp);
         theMail.setNeedAuth(true); //需要验证
 
-        if (!theMail.setSubject(subject)) return false;
-        if (!theMail.setBody(content)) return false;
-        if (!theMail.setTo(to)) return false;
-        if (!theMail.setCopyTo(copyto)) return false;
-        if (!theMail.setFrom(from)) return false;
+        if (!theMail.setSubject(subject)) {
+            return false;
+        }
+        if (!theMail.setBody(content)) {
+            return false;
+        }
+        if (!theMail.setTo(to)) {
+            return false;
+        }
+        if (!theMail.setCopyTo(copyto)) {
+            return false;
+        }
+        if (!theMail.setFrom(from)) {
+            return false;
+        }
         theMail.setNamePass(username, password);
 
-        if (!theMail.sendOut()) return false;
+        if (!theMail.sendOut()) {
+            return false;
+        }
         return true;
     }
 
@@ -302,14 +331,26 @@ public class Mail {
         Mail theMail = new Mail(smtp);
         theMail.setNeedAuth(true); //需要验证
 
-        if (!theMail.setSubject(subject)) return false;
-        if (!theMail.setBody(content)) return false;
-        if (!theMail.addFileAffix(filename)) return false;
-        if (!theMail.setTo(to)) return false;
-        if (!theMail.setFrom(from)) return false;
+        if (!theMail.setSubject(subject)) {
+            return false;
+        }
+        if (!theMail.setBody(content)) {
+            return false;
+        }
+        if (!theMail.addFileAffix(filename)) {
+            return false;
+        }
+        if (!theMail.setTo(to)) {
+            return false;
+        }
+        if (!theMail.setFrom(from)) {
+            return false;
+        }
         theMail.setNamePass(username, password);
 
-        if (!theMail.sendOut()) return false;
+        if (!theMail.sendOut()) {
+            return false;
+        }
         return true;
     }
 
@@ -331,15 +372,29 @@ public class Mail {
         Mail theMail = new Mail(smtp);
         theMail.setNeedAuth(true); //需要验证
 
-        if (!theMail.setSubject(subject)) return false;
-        if (!theMail.setBody(content)) return false;
-        if (!theMail.addFileAffix(filename)) return false;
-        if (!theMail.setTo(to)) return false;
-        if (!theMail.setCopyTo(copyto)) return false;
-        if (!theMail.setFrom(from)) return false;
+        if (!theMail.setSubject(subject)) {
+            return false;
+        }
+        if (!theMail.setBody(content)) {
+            return false;
+        }
+        if (!theMail.addFileAffix(filename)) {
+            return false;
+        }
+        if (!theMail.setTo(to)) {
+            return false;
+        }
+        if (!theMail.setCopyTo(copyto)) {
+            return false;
+        }
+        if (!theMail.setFrom(from)) {
+            return false;
+        }
         theMail.setNamePass(username, password);
 
-        if (!theMail.sendOut()) return false;
+        if (!theMail.sendOut()) {
+            return false;
+        }
         return true;
     }
 }

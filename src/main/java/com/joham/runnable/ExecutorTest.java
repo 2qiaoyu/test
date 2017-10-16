@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutorTest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Random random = new Random();
         // 建立一个容量为3的固定尺寸的线程池
         ExecutorService executor = Executors.newFixedThreadPool(3);
@@ -38,6 +38,7 @@ class ExecutorThread implements Runnable {
         this.delay = delay;
     }
 
+    @Override
     public void run() {
         System.out.println("启动: " + name);
         try {

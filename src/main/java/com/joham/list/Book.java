@@ -30,6 +30,7 @@ public class Book implements Comparable { // 定义名为Book的类，默认继�
     }
 
     // 重写继承自父类Object的方法，满足Book类信息描述的要求
+    @Override
     public String toString() {
         String showStr = id + "\t" + name; // 定义显示类信息的字符串
         DecimalFormat formatPrice = new DecimalFormat("0.00");// 格式化价格到小数点后两位
@@ -40,6 +41,7 @@ public class Book implements Comparable { // 定义名为Book的类，默认继�
         return showStr; // 返回类信息字符串
     }
 
+    @Override
     public int compareTo(Object obj) {// Comparable接口中的方法
         Book b = (Book) obj;
         return this.id - b.id; // 按书的id比较大小，用于默认排序

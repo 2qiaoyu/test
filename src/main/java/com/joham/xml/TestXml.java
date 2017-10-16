@@ -7,10 +7,10 @@ public class TestXml {
         employee.setAge(24);
         employee.setDepartment("财务");
         JaxbUtil jaxbUtil = new JaxbUtil();
-        String xml = jaxbUtil.convertToXml(employee);
+        String xml = JaxbUtil.convertToXml(employee);
         System.out.println(xml);
         System.out.println("----------------------------------------");
-        Employee employee1 = jaxbUtil.converyToJavaBean(xml, Employee.class);
+        Employee employee1 = JaxbUtil.converyToJavaBean(xml, Employee.class);
         System.out.println(employee1.getName());
         System.out.println(employee1.getAge());
         System.out.println(employee1.getDepartment());

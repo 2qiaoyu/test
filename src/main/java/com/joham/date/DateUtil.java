@@ -734,6 +734,8 @@ public class DateUtil {
             case 6:
                 week = Week.SATURDAY;
                 break;
+            default:
+                week = Week.SUNDAY;
         }
         return week;
     }

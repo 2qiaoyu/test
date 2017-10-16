@@ -106,7 +106,7 @@ public class TestDom4J {
                     + "---" + attr.getValue());
         }
 
-        if (!(node.getTextTrim().equals(""))) {
+        if (!("".equals(node.getTextTrim()))) {
             System.out.println("文本内容：：：：" + node.getText());
         }
 

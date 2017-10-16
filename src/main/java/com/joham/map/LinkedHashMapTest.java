@@ -10,7 +10,7 @@ public class LinkedHashMapTest {
 
         //无序
         System.out.println("====================================无序========================================");
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(16);
         map.put("apple", "苹果");
         map.put("watermelon", "西瓜");
         map.put("banana", "香蕉");

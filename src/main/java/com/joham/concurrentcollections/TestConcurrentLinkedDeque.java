@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public class TestConcurrentLinkedDeque {
     public static void main(String[] args) {
         ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<>();
-        Thread threads[] = new Thread[100];
+        Thread[] threads = new Thread[100];
 
         //创建100个AddTask对象，对于它们中的每一个用一个线程来运行。用之前创建的数组来存储每个线程，并启动这些线程。
         for (int i = 0; i < threads.length; i++) {
