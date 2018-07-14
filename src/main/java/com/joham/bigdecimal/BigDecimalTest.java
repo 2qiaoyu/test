@@ -2,8 +2,12 @@ package com.joham.bigdecimal;
 
 import java.math.BigDecimal;
 
-
-public class Test {
+/**
+ * BigDecimal用法
+ *
+ * @author joham
+ */
+public class BigDecimalTest {
 
     public static void main(String[] args) throws IllegalAccessException {
 
@@ -41,6 +45,8 @@ public class Test {
 
         //除法
         System.out.println(div(value1, value2, 2));
+
+        System.out.println(BigDecimal.valueOf(-1000).compareTo(BigDecimal.ZERO) == -1);
     }
 
     /**

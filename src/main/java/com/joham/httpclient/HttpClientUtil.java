@@ -9,8 +9,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -47,7 +47,7 @@ public class HttpClientUtil {
         try {
             //设置连接超时时间
             RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(2 * 1000)
-                    .setConnectionRequestTimeout(1000)
+                    .setConnectionRequestTimeout(2000)
                     .setSocketTimeout(25 * 1000)
                     .build();
 
@@ -55,6 +55,7 @@ public class HttpClientUtil {
                     .setConnectionManager(poolingHttpClientConnectionManager())
                     .evictExpiredConnections()
                     .setDefaultRequestConfig(requestConfig)
+                    .setRetryHandler(new DefaultHttpRequestRetryHandler(3, true))
                     .build();
             HttpGet request = new HttpGet(url);
             if (headersMap != null) {
@@ -172,7 +173,8 @@ public class HttpClientUtil {
             HttpPost request = new HttpPost(url);
             if (jsonParam != null) {
                 LOGGER.info("postJson参数:{}", jsonParam);
-                StringEntity entity = new StringEntity(jsonParam, UTF8);//解决中文乱码问题
+                //解决中文乱码问题
+                StringEntity entity = new StringEntity(jsonParam, UTF8);
                 entity.setContentEncoding(UTF8);
                 entity.setContentType("application/json");
                 request.setEntity(entity);

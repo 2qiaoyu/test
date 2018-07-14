@@ -6,7 +6,12 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
-public class Test {
+/**
+ * java8 stream用法
+ *
+ * @author joham
+ */
+public class StreamTest {
     public static void main(String[] args) {
         test();
     }
@@ -16,7 +21,7 @@ public class Test {
         Student student1 = new Student(12, "小强");
         Student student2 = new Student(14, "小红");
         Student student3 = new Student(14, "小张");
-        List<Student> list = new ArrayList<Student>();
+        List<Student> list = new ArrayList<>();
         list.add(student);
         list.add(student1);
         list.add(student2);
@@ -24,7 +29,7 @@ public class Test {
 
         //条件查询id大于11的名字
         System.out.println("id大于11的名字");
-        list.stream().filter(s -> s.getId() > 11).forEach(s -> System.out.println(s.getName()));
+        System.out.println(list.stream().filter(s -> s.getId() > 11).collect(Collectors.toList()));
 
         System.out.println("取集合的前两个,忽略掉第一个");
         //取集合的前两个,忽略掉第一个
@@ -52,7 +57,7 @@ public class Test {
 
         //将名称提取出来在成为一个集合
         System.out.println("将名称提取出来在成为一个集合");
-        list.stream().map(Student::getName).collect(Collectors.toList()).forEach(s -> System.out.println(s));
+        list.stream().map(Student::getName).collect(Collectors.toList()).forEach(System.out::println);
 
         //将id和名称提取出来id去重后成为一个map
         System.out.println("将id和名称提取出来id去重后成为一个map");
@@ -67,7 +72,7 @@ public class Test {
                 Arrays.asList(4, 5, 6)
         );
         Stream<Integer> outputStream = inputStream.
-                flatMap((childList) -> childList.stream());
+                flatMap(Collection::stream);
         outputStream.forEach(s -> System.out.println(s.longValue()));
 
         //利用reduce取得最小值
