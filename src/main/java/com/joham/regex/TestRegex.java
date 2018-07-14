@@ -4,40 +4,69 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 电话号码，手机，邮箱，金额，日期正则验证
+ * 正则验证
+ *
+ * @author qiaoyu
  */
 public class TestRegex {
+
+    /**
+     * 国内手机号(13,14,15,16,17,18,19段)
+     */
+    private static Pattern mobile = Pattern.compile("^(13|14|15|16|17|18|19)[0-9]{9}$");
+
+    /**
+     * 国内电话号码
+     */
+    private static Pattern telephone = Pattern.compile("0\\d{2,3}-\\d{7,8}");
+
+    /**
+     * 金额保留两位小数,可以为0
+     */
+    private static Pattern amount = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$");
+
+    /**
+     * 0.01-0.99，eg:折扣率
+     */
+    private static Pattern zeroOne = Pattern.compile("^0\\.[1-9][0-9]{0,1}|0\\.0[1-9]{1}$");
+
+    /**
+     * 10位正整数(1-9999999999)
+     */
+    private static Pattern mun = Pattern.compile("^[1-9]\\d{0,9}$");
+
+    /**
+     * 邮箱
+     */
+    private static Pattern mail = Pattern.compile("^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$");
+
+    /**
+     * 网址
+     */
+    private static Pattern url = Pattern.compile("^([hH][tT]{2}[pP]:\\/\\/|[hH][tT]{2}[pP][sS]:\\/\\/)(([A-Za-z0-9-~]+)\\.)+([A-Za-z0-9-~\\/])+$");
+
+    /**
+     * 销售价(0-99999999.99)
+     */
+    private static Pattern salePrice = Pattern.compile("^(0|[1-9][0-9]{0,7})(\\.[0-9]{1,2})?$");
+
+    /**
+     * 销售价(0.01-99999999.99)
+     */
+    private static Pattern salePrice1 = Pattern.compile("^([1-9](\\d{1,7})?(\\.\\d{1,2})?|0\\.(?!0+$)\\d{1,2})$");
+
     public static void main(String[] args) {
-        //System.out.println(isTelephone("025-52181263"));
-//        System.out.println(isMobileNO("17712345678"));
-        System.out.println(isNumber("-wefw"));
+        String test = "0.01";
+        System.out.println(zeroOne.matcher(test).find());
+//        System.out.println(isValidDate("2018-02-28"));
     }
 
-    // 判断电话
-    public static boolean isTelephone(String phonenumber) {
-        String phone = "0\\d{2,3}-\\d{7,8}";
-        Pattern p = Pattern.compile(phone);
-        Matcher m = p.matcher(phonenumber);
-        return m.matches();
-    }
-
-    // 判断手机号
-    public static boolean isMobileNO(String mobiles) {
-        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(14[57])|(17[0])|(17[7])|(18[0,0-9]))\\d{8}$");
-        Matcher m = p.matcher(mobiles);
-        return m.matches();
-    }
-
-    // 判断邮箱
-    public static boolean isEmail(String email) {
-        String str = "^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
-        Pattern p = Pattern.compile(str);
-        Matcher m = p.matcher(email);
-        return m.matches();
-    }
-
-    // 判断日期格式:yyyy-mm-dd
-
+    /**
+     * 判断日期格式:YYYY-MM-dd
+     *
+     * @param sDate
+     * @return
+     */
     public static boolean isValidDate(String sDate) {
         String datePattern1 = "\\d{4}-\\d{2}-\\d{2}";
         String datePattern2 = "^((\\d{2}(([02468][048])|([13579][26]))"
@@ -58,16 +87,5 @@ public class TestRegex {
             }
         }
         return false;
-    }
-
-    //验证金额
-    public static boolean isNumber(String str) {
-        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){0,2})?$"); // 判断小数点后一位的数字的正则表达式
-        java.util.regex.Matcher match = pattern.matcher(str);
-        if (match.matches() == false) {
-            return false;
-        } else {
-            return true;
-        }
     }
 }
