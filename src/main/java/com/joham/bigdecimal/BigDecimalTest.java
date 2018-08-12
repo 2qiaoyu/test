@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  */
 public class BigDecimalTest {
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
 
         BigDecimal b = new BigDecimal("2.345");
 
@@ -30,23 +30,8 @@ public class BigDecimalTest {
 
         System.out.println();
 
-        Double value1 = 10.0;
-
-        Double value2 = 5.0;
-
-        //加法
-        System.out.println(add(value1, value2));
-
-        //减法
-        System.out.println(sub(value1, value2));
-
-        //乘法
-        System.out.println(mul(value1, value2));
-
-        //除法
-        System.out.println(div(value1, value2, 2));
-
-        System.out.println(BigDecimal.valueOf(-1000).compareTo(BigDecimal.ZERO) == -1);
+        System.out.println(BigDecimal.valueOf(0.01));
+        System.out.println(new BigDecimal(0.01));
     }
 
     /**
