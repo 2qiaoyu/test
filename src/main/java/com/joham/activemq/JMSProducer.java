@@ -8,7 +8,7 @@ import javax.jms.*;
 /**
  * 消息的生产者（发送者）
  * http://blog.csdn.net/jiuqiyuliang/article/details/48608237
- * @author qiaoyu
+ * @author joham
  */
 public class JMSProducer {
     //默认连接用户名

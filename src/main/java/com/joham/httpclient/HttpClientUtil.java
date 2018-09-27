@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * http请求封装
  *
- * @author qiaoyu
+ * @author joham
  */
 public class HttpClientUtil {
 

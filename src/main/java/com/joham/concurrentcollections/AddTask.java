@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 /**
  * 并发集合ConcurrentLinkedDeque
  *
- * @author qiaoyu
+ * @author joham
  */
 public class AddTask implements Runnable {
 

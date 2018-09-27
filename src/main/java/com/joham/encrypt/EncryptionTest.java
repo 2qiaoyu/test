@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * 加密工具类测试类
  *
- * @author qiaoyu
+ * @author joham
  */
 public class EncryptionTest {
 

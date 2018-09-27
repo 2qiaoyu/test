@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * 正则验证
  *
- * @author qiaoyu
+ * @author joham
  */
 public class TestRegex {
 

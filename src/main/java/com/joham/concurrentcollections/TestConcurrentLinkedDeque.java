@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  * 使用非阻塞线程安全的列表
  * http://ifeve.com/concurrent-collections-2/
  *
- * @author qiaoyu
+ * @author joham
  */
 public class TestConcurrentLinkedDeque {
     public static void main(String[] args) {

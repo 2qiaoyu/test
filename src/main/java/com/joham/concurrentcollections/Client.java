@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 并发集合LinkedBlockingDeque
  *
- * @author qiaoyu
+ * @author joham
  */
 public class Client implements Runnable {
 

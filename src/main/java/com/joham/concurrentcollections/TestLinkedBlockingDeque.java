@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * 使用阻塞线程安全的列表
  * http://ifeve.com/concurrent-collections-3/
  *
- * @author qiaoyu
+ * @author joham
  */
 public class TestLinkedBlockingDeque {
     public static void main(String[] args) throws Exception {

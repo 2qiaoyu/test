@@ -9,7 +9,7 @@ import javax.jms.*;
  * 消息的消费者（接受者）
  * http://blog.csdn.net/jiuqiyuliang/article/details/48608237
  *
- * @author qiaoyu
+ * @author joham
  */
 public class JMSConsumer {
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;//默认连接用户名

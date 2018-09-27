@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * 加密工具字符工具类
  *
- * @author qiaoyu
+ * @author joham
  */
 public class EncryptionUtil {
 

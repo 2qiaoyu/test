@@ -8,7 +8,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 /**
  * JMH JVM性能测试
- * @author qiaoyu
+ * @author joham
  */
 public class JMHTest {
 

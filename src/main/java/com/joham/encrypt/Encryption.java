@@ -26,7 +26,7 @@ import java.util.Random;
 /**
  * 加密工具类
  *
- * @author qiaoyu
+ * @author joham
  */
 public class Encryption {
 
