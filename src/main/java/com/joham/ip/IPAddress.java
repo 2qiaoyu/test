@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 获取Ip地址
+ *
+ * @author joham
  */
 public final class IPAddress {
 
@@ -11,10 +13,6 @@ public final class IPAddress {
      * unknown ip
      */
     public static final String UNKNOWN = "unknown";
-
-    private IPAddress() {
-
-    }
 
     /**
      * 获取IP地址
@@ -43,8 +41,8 @@ public final class IPAddress {
             ip = request.getHeader("HTTP_X_FORWARDED_FOR");
         }
         // 如果是多级代理，那么取第一个ip为客户ip
-        if (ip != null && ip.indexOf(",") != -1) {
-            ip = ip.substring(ip.lastIndexOf(",") + 1, ip.length()).trim();
+        if (ip != null && ip.contains(",")) {
+            ip = ip.substring(ip.lastIndexOf(",") + 1).trim();
         }
         return ip;
     }
