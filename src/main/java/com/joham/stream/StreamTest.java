@@ -13,7 +13,7 @@ import static java.util.stream.Collectors.joining;
  */
 public class StreamTest {
     public static void main(String[] args) {
-        test();
+        test1();
     }
 
     public static void test() {
@@ -92,5 +92,24 @@ public class StreamTest {
         System.out.println(list.stream().anyMatch(s -> s.getId() > 13));
         System.out.println("noneMatch");
         System.out.println(list.stream().noneMatch(s -> s.getId() > 20));
+    }
+
+    /**
+     * 构建流的几种方法
+     */
+    private static void test1() {
+        // 1. Individual values
+        Stream stream1 = Stream.of("a", "b", "c");
+        System.out.println(stream1);
+        // 2. Arrays
+        String[] strArray = new String[]{"a", "b", "c"};
+        Stream stream2 = Stream.of(strArray);
+        System.out.println(stream2);
+        Stream stream3 = Arrays.stream(strArray);
+        System.out.println(stream3);
+        // 3. Collections
+        List<String> list = Arrays.asList(strArray);
+        Stream stream4 = list.stream();
+        System.out.println(stream4);
     }
 }

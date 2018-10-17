@@ -15,6 +15,11 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 二维码生成和解析
+ *
+ * @author joham
+ */
 public class QRCodeTest {
 
     public static void main(String[] args) throws Exception {
@@ -30,15 +35,20 @@ public class QRCodeTest {
         String fileName = "test.png";
         //内容
         String content = "http://www.baidu.com";
-        int width = 200; // 图像宽度
-        int height = 200; // 图像高度
-        String format = "png";// 图像类型
-        Map<EncodeHintType, Object> hints = new HashMap<>();
+        // 图像宽度
+        int width = 200;
+        // 图像高度
+        int height = 200;
+        // 图像类型
+        String format = "png";
+        Map<EncodeHintType, Object> hints = new HashMap<>(16);
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        // 生成矩阵
         BitMatrix bitMatrix = new MultiFormatWriter().encode(content,
-                BarcodeFormat.QR_CODE, width, height, hints);// 生成矩阵
+                BarcodeFormat.QR_CODE, width, height, hints);
         Path path = FileSystems.getDefault().getPath(filePath, fileName);
-        MatrixToImageWriter.writeToPath(bitMatrix, format, path);// 输出图像
+        // 输出图像
+        MatrixToImageWriter.writeToPath(bitMatrix, format, path);
         System.out.println("输出成功");
     }
 
@@ -55,11 +65,10 @@ public class QRCodeTest {
             BinaryBitmap binaryBitmap = new BinaryBitmap(binarizer);
             Map<DecodeHintType, Object> hints = new HashMap<>();
             hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
-            Result result = new MultiFormatReader().decode(binaryBitmap, hints);// 对图像进行解码
+            // 对图像进行解码
+            Result result = new MultiFormatReader().decode(binaryBitmap, hints);
             System.out.println(result.getText());
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NotFoundException e) {
             e.printStackTrace();
         }
     }
