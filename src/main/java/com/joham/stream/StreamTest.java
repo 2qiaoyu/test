@@ -2,6 +2,7 @@ package com.joham.stream;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
@@ -13,7 +14,8 @@ import static java.util.stream.Collectors.joining;
  */
 public class StreamTest {
     public static void main(String[] args) {
-        test1();
+//        test1();
+        test3();
     }
 
     public static void test() {
@@ -111,5 +113,25 @@ public class StreamTest {
         List<String> list = Arrays.asList(strArray);
         Stream stream4 = list.stream();
         System.out.println(stream4);
+    }
+
+    private static void test2() {
+        String[] stringCollection = {"aasd", "bdd", "bdc", "bfd", "e", "f"};
+        //单词以b开头的计数
+        long startsWithB = Arrays.stream(stringCollection)
+                .filter((s) -> s.startsWith("b"))
+                .count();
+        System.out.println(startsWithB);
+
+        //
+        Optional<String> reduced = Arrays.stream(stringCollection)
+                        .sorted()
+                        .reduce((s1, s2) -> s1 + "#" + s2);
+        System.out.println(reduced.get());
+    }
+
+    private static void test3() {
+        IntStream range = IntStream.range(1, 9);
+        System.out.println(range.min());
     }
 }
