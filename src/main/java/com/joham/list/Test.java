@@ -7,9 +7,12 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @author joham
+ */
 public class Test {
     public static void main(String[] args) {
-        List<Book> list = new ArrayList<Book>(); // 数组序列
+        List<Book> list = new ArrayList<>();
         Book b1 = new Book(10000, "红楼梦", 150.86, new GregorianCalendar(2009,
                 01, 25), "曹雪芹、高鄂");
         Book b2 = new Book(10001, "三国演义", 99.68, new GregorianCalendar(2008, 7,
@@ -28,37 +31,52 @@ public class Test {
         // Collections.sort(list); //没有默认比较器，不能排序
         System.out.println("数组序列中的元素:");
         myprint(list);
-        Collections.sort(list, new PriceComparator()); // 根据价格排序
+        // 根据价格排序
+        Collections.sort(list, new PriceComparator());
         System.out.println("按书的价格排序:");
         myprint(list);
-        Collections.sort(list, new CalendarComparator()); // 根据时间排序
+        // 根据时间排序
+        Collections.sort(list, new CalendarComparator());
         System.out.println("按书的出版时间排序:");
         myprint(list);
     }
 
-    // 自定义方法：分行打印输出list中的元素
+    /**
+     * 自定义方法：分行打印输出list中的元素
+     *
+     * @param list
+     */
     public static void myprint(List<Book> list) {
-        Iterator it = list.iterator(); // 得到迭代器，用于遍历list中的所有元素
-        while (it.hasNext()) {// 如果迭代器中有元素，则返回true
-            System.out.println("\t" + it.next());// 显示该元素
+        // 得到迭代器，用于遍历list中的所有元素
+        Iterator it = list.iterator();
+        // 如果迭代器中有元素，则返回true
+        while (it.hasNext()) {
+            // 显示该元素
+            System.out.println("\t" + it.next());
         }
     }
 
-    // 自定义比较器：按书的价格排序
+    /**
+     * 自定义比较器：按书的价格排序
+     */
     static class PriceComparator implements Comparator {
         @Override
-        public int compare(Object object1, Object object2) {// 实现接口中的方法
-            Book p1 = (Book) object1; // 强制转换
+        public int compare(Object object1, Object object2) {
+            // 强制转换
+            Book p1 = (Book) object1;
             Book p2 = (Book) object2;
             return new Double(p1.price).compareTo(new Double(p2.price));
         }
     }
 
-    // 自定义比较器：按书出版时间来排序
+    /**
+     * 自定义比较器：按书出版时间来排序
+     */
     static class CalendarComparator implements Comparator {
         @Override
-        public int compare(Object object1, Object object2) {// 实现接口中的方法
-            Book p1 = (Book) object1; // 强制转换
+        public int compare(Object object1, Object object2) {
+            // 强制转换
+            Book p1 = (Book) object1;
             Book p2 = (Book) object2;
             return p2.calendar.compareTo(p1.calendar);
         }

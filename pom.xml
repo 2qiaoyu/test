@@ -184,6 +184,18 @@
             <version>3.8.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.rop</groupId>
+            <artifactId>rop</artifactId>
+            <version>1.0.9-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
     </dependencies>
 
     <build>

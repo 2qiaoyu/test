@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.joining;
 public class StreamTest {
     public static void main(String[] args) {
 //        test1();
-        test3();
+        test5();
     }
 
     public static void test() {
@@ -112,7 +112,9 @@ public class StreamTest {
         // 3. Collections
         List<String> list = Arrays.asList(strArray);
         Stream stream4 = list.stream();
-        System.out.println(stream4);
+        //流拼接并去重
+        Stream stream = Stream.concat(stream1, stream2).distinct();
+        System.out.println(stream.collect(Collectors.toList()));
     }
 
     private static void test2() {
@@ -125,13 +127,24 @@ public class StreamTest {
 
         //
         Optional<String> reduced = Arrays.stream(stringCollection)
-                        .sorted()
-                        .reduce((s1, s2) -> s1 + "#" + s2);
+                .sorted()
+                .reduce((s1, s2) -> s1 + "#" + s2);
         System.out.println(reduced.get());
     }
 
     private static void test3() {
         IntStream range = IntStream.range(1, 9);
         System.out.println(range.min());
+    }
+
+    public static void test5() {
+        //peek 对每个元素执行操作并返回一个新的 Stream
+        Stream.of("one", "two", "three", "four")
+                .filter(e -> e.length() > 3)
+                .peek(e -> System.out.println("Filtered value: " + e))
+                .map(String::toUpperCase)
+                .peek(e -> System.out.println("Mapped value: " + e))
+                .collect(Collectors.toList());
+
     }
 }

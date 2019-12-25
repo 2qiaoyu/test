@@ -6,6 +6,11 @@ import org.apache.commons.lang.time.FastDateFormat;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * 订单随机数
+ *
+ * @author joham
+ */
 public class CodeGenUtil {
 
     public static String genOrderCode() {
@@ -15,6 +20,14 @@ public class CodeGenUtil {
     public static String genOrderCode1() {
         return FastDateFormat.getInstance("yyMMddHHmmss").format(System.currentTimeMillis())
                 .concat(String.valueOf(randomByLen(6)));
+    }
+
+    public static void main(String[] args) {
+        System.out.println("H" + randomByLen(10));
+    }
+
+    public static String get() {
+        return "H" + randomByLen(10);
     }
 
     /**

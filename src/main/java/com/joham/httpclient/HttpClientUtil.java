@@ -1,5 +1,6 @@
 package com.joham.httpclient;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -30,7 +31,7 @@ import java.util.Map;
  */
 public class HttpClientUtil {
 
-    public static final String UTF8 = "UTF-8";
+    private static final String UTF8 = "UTF-8";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientUtil.class);
 
@@ -46,9 +47,9 @@ public class HttpClientUtil {
         CloseableHttpClient httpClient = null;
         try {
             //设置连接超时时间
-            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(2 * 1000)
-                    .setConnectionRequestTimeout(2000)
-                    .setSocketTimeout(25 * 1000)
+            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(5 * 1000)
+                    .setConnectionRequestTimeout(5000)
+                    .setSocketTimeout(10 * 1000)
                     .build();
 
             httpClient = HttpClientBuilder.create()
@@ -60,7 +61,7 @@ public class HttpClientUtil {
             HttpGet request = new HttpGet(url);
             if (headersMap != null) {
                 for (Map.Entry<String, String> header : headersMap.entrySet()
-                        ) {
+                ) {
                     request.setHeader(header.getKey(), header.getValue());
                 }
             }
@@ -122,7 +123,7 @@ public class HttpClientUtil {
             }
             if (headersMap != null) {
                 for (Map.Entry<String, String> header : headersMap.entrySet()
-                        ) {
+                ) {
                     request.setHeader(header.getKey(), header.getValue());
                 }
             }
@@ -131,7 +132,7 @@ public class HttpClientUtil {
             //请求发送成功，并得到响应
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 strResult = EntityUtils.toString(response.getEntity(), UTF8);
-                LOGGER.info("{}请求成功{}", url, strResult);
+                LOGGER.info("{}请求成功{},参数{}", url, strResult, paramsMap);
             } else {
                 LOGGER.info("{}请求失败,状态码{}错误信息{}", url, response.getStatusLine().getStatusCode(), EntityUtils.toString(response.getEntity(), UTF8));
             }
@@ -139,6 +140,7 @@ public class HttpClientUtil {
             LOGGER.info("{}请求失败,异常信息{}", url, e.getMessage());
         } finally {
             try {
+                assert httpClient != null;
                 httpClient.close();
             } catch (IOException e) {
                 // ignore
@@ -181,7 +183,7 @@ public class HttpClientUtil {
             }
             if (headersMap != null) {
                 for (Map.Entry<String, String> header : headersMap.entrySet()
-                        ) {
+                ) {
                     request.setHeader(header.getKey(), header.getValue());
                 }
             }
@@ -198,6 +200,7 @@ public class HttpClientUtil {
             LOGGER.info("{}请求失败,异常信息{}", url, e.getMessage());
         } finally {
             try {
+                assert httpClient != null;
                 httpClient.close();
             } catch (IOException e) {
                 // ignore
@@ -209,7 +212,7 @@ public class HttpClientUtil {
     /**
      * 设置连接池参数
      */
-    public static PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
+    private static PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
         PoolingHttpClientConnectionManager poolingHttpClientConnectionManager = new PoolingHttpClientConnectionManager();
         poolingHttpClientConnectionManager.setMaxTotal(200);
         poolingHttpClientConnectionManager.setDefaultMaxPerRoute(poolingHttpClientConnectionManager.getMaxTotal());
