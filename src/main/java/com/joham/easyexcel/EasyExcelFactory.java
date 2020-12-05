@@ -4,7 +4,6 @@ import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.alibaba.excel.event.WriteHandler;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 
@@ -16,7 +15,6 @@ import java.util.List;
 /**
  * Reader and writer factory class
  *
- * @author jipengfei
  */
 public class EasyExcelFactory {
 
@@ -108,15 +106,13 @@ public class EasyExcelFactory {
      * @param outputStream the java OutputStream you wish to write the data to
      * @param typeEnum     03 or 07
      * @param needHead
-     * @param handler      User-defined callback
      * @return new  ExcelWriter
      */
     public static ExcelWriter getWriterWithTempAndHandler(InputStream temp,
                                                           OutputStream outputStream,
                                                           ExcelTypeEnum typeEnum,
-                                                          boolean needHead,
-                                                          WriteHandler handler) {
-        return new ExcelWriter(temp, outputStream, typeEnum, needHead, handler);
+                                                          boolean needHead) {
+        return new ExcelWriter(temp, outputStream, typeEnum, needHead);
     }
 
 }
