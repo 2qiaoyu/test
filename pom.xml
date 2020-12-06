@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.4</version>
+            <version>1.18.14</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -182,18 +182,6 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>3.8.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.rop</groupId>
-            <artifactId>rop</artifactId>
-            <version>1.0.9-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
